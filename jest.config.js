@@ -30,4 +30,10 @@ module.exports = {
       babelConfig: true,
     },
   },
+  coverageDirectory: '<rootDir>/tests/unit/coverage',
+  collectCoverageFrom: [
+    'src/**/*.{ts,js,vue}',
+    '!**/node_modules/**',
+  ],
+  collectCoverage: true,
 };
