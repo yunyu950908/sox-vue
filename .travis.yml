@@ -1,0 +1,16 @@
+git:
+  depth: 1
+language: node_js
+node_js:
+  - '10'
+cache:
+  yarn: true
+install:
+  - yarn global add codacy-coverage
+  - yarn install
+script:
+  - yarn run test:unit
+  - yarn run build
+after_script:
+  - bash <(curl -s https://codecov.io/bash) -B $TRAVIS_PULL_REQUEST_BRANCH
+  - cat tests/unit/coverage/lcov.info | codacy-coverage --verbose
